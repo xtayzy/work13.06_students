@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'index' %}">index</a>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Добавить курс</button>
+</form>
+<div>
+    <h2>Курсы</h2>
+    {% for course in courses %}
+        <a href="{% url 'course_page' id=course.id %}">{{ course.name }}</a>
+    {% endfor %}
+</div>
+</body>
+</html>

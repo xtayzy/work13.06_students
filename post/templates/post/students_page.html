@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'index' %}">index</a>
+
+<h2>Добавить карту студента</h2>
+<form action="{% url 'add_card' %}" method="post">
+    {% csrf_token %}
+    {{ cards_form.as_p }}
+    <button>Добавить</button>
+</form>
+<h2>Добавить студента</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Добавить</button>
+</form>
+<h1>Студенты</h1>
+{% for student in students %}
+    <div>
+        <a href="{% url 'student' id=student.id %}">{{ student.name }}</a>
+    </div>
+{% endfor %}
+</body>
+</html>

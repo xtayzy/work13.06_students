@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'students' %}">students</a>
+<h1>{{ student.name }}</h1>
+<h2>номер карты: {{ student.card_id }}</h2>
+<h2>возраст: {{ student.age }}</h2>
+<a href="{% url 'delete_student' id=student.id %}">
+    <button>Удалить студента</button>
+</a>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>редактировать</button>
+</form>
+<h2>курсы:</h2>
+{% for course in courses %}
+    <div>
+        {{ course.name }}
+    </div>
+{% endfor %}
+</body>
+</html>

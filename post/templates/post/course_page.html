@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'courses' %}">courses</a>
+<h1>{{ course.name }}</h1>
+<h2>категория: {{ course.category.name }}</h2>
+<a href="{% url 'delete_course' id=course.id %}">
+    <button>Удалить</button>
+</a>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Редактировать</button>
+</form>
+<div>
+    <h2>Студенты</h2>
+    {% for student in students %}
+        <div>{{ student.name }}</div>
+    {% endfor %}
+</div>
+</body>
+</html>
